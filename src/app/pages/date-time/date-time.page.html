@@ -1,0 +1,46 @@
+<app-header titulo="date time"></app-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list-header>
+    <ion-label>Datos Nacimiento</ion-label>
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label>Fecha Nacimiento</ion-label>
+    <ion-datetime [value]="fechaNaci.toISOString()" display-format="DD MMMM YYYY" (ionChange)="cambioFecha($event)"></ion-datetime>
+  </ion-item>
+
+  <ion-list-header>
+    <ion-label>Restricciones</ion-label>
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label>Fecha Label</ion-label>
+    <ion-input
+      value="{{ fechaNaci.toISOString() | date: 'dd.MM.yyyy' }}"
+      id="date"
+      class="ion-text-end"
+    ></ion-input>
+    <ion-popover trigger="date" size="cover">
+      <ng-template>
+        <ion-datetime
+          presentation="date"
+          [(ngModel)]="fechaNaci"
+          locale="sl-SI"
+        ></ion-datetime>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>Min y Max</ion-label>
+    <ion-datetime min="2015-01-01" max="2025-12-31"></ion-datetime>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>Años</ion-label>
+    <ion-datetime presentation="year" min="2015" max="2025"></ion-datetime>
+  </ion-item>
+  
+</ion-content>
